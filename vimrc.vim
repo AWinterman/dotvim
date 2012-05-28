@@ -4,8 +4,50 @@ set nocompatible
 call pathogen#infect() 
 call pathogen#runtime_append_all_bundles()
 
+
+"Lots of folding
+set foldmethod=indent
+set foldlevel=99
+
+"control + direction instead of c+w + direction
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+set expandtab
+
+
+"Easy access to Gundo. I'll have to explore this at some point soon, it looks
+"really cool.
+map <leader>g :GundoToggle<CR>
+
+"Mak sure code is pep8:
+let g:pep8_map='<leader>8'
+
+"autocompletion settings:
+au FileType python set omnifunc=pythoncomplete#Complete
+let g:SuperTabDefaultCompletionType = "context"
+
+"Enable menu and pydoc preview
+filetype on
+filetype on
+set completeopt=menuone,longest,preview
+
+"nerdtree:
+map <leader>n :NERDTreeToggle<CR>
+
+"RopeTree
+map <leader>j :RopeGotoDefinition<CR>
+map <leader>r :RopeRename<CR>
+
+
+
+
+
+
 "general
 syntax on
+filetype on
 filetype plugin indent on
 
 " Here's the vimclojure stuff. You'll need to adjust the NailgunClient
@@ -60,8 +102,10 @@ let g:miniBufExplModSelTarget = 1
 " Things having to do with my r-vim-plugin.
 let vimrplugin_underscore=0
 
-colorscheme molokai
-let g:molokai_original=1
+" vimsh 
+map \sh :source ~/bin/vimsh/vimsh.vim
+ 
+
 
 
 "font and linespace
@@ -70,3 +114,6 @@ set linespace=2
 
 set t_Co=256 
 
+colorscheme molokai
+
+let g:molokai_original=1
