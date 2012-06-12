@@ -21,28 +21,17 @@ set expandtab
 "really cool.
 map <leader>g :GundoToggle<CR>
 
+
 "Mak sure code is pep8:
-let g:pep8_map='<leader>8'
 
 "autocompletion settings:
-au FileType python set omnifunc=pythoncomplete#Complete
-let g:SuperTabDefaultCompletionType = "context"
+"au FileType python set omnifunc=pythoncomplete#Complete
+"let g:SuperTabDefaultCompletionType = "context"
 
 "Enable menu and pydoc preview
 filetype on
 filetype on
 set completeopt=menuone,longest,preview
-
-"nerdtree:
-map <leader>n :NERDTreeToggle<CR>
-
-"RopeTree
-map <leader>j :RopeGotoDefinition<CR>
-map <leader>r :RopeRename<CR>
-
-
-
-
 
 
 "general
@@ -101,12 +90,6 @@ let g:miniBufExplModSelTarget = 1
 
 " Things having to do with my r-vim-plugin.
 let vimrplugin_underscore=0
-
-" vimsh 
-map \sh :source ~/bin/vimsh/vimsh.vim
- 
-
-
 
 "font and linespace
 set guifont=Ubuntu\ Mono:h14
