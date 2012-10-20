@@ -14,7 +14,6 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
-set expandtab
 
 
 "Easy access to Gundo. I'll have to explore this at some point soon, it looks
@@ -32,6 +31,8 @@ map <leader>g :GundoToggle<CR>
 filetype on
 filetype on
 set completeopt=menuone,longest,preview
+
+au FileType py setlocal comments-=:# comments+=:#
 
 
 "general
@@ -56,16 +57,48 @@ let vimclojure#UseErrorBuffer = 0
 "Search highlighting and autocomplete
 set hlsearch
 set incsearch
+set smartcase
+
+set history=1000         " remember more commands and search history
+set undolevels=1000      " use many muchos levels of undo
+set wildignore=*.swp,*.bak,*.pyc,*.class
+set title                " change the terminal's title
+set visualbell           " don't beep
+set noerrorbells         " don't beep
+
+
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
+autocmd filetype html,xml set listchars-=tab:>.
+set pastetoggle=<F2>
+
+
 
 "" set number:
 "highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-set nocompatible
+
+set laststatus=2   " Always show the statusline
+set encoding=utf-8 " Necessary to show Unicode glyphs
+
 set tabstop=4 
-set shiftwidth=4  
+set shiftwidth=4 
+set shiftwidth=4
+set expandtab
+
+"line limits:
+set tw=79
+set autoindent
+set copyindent    " copy the previous indentation on autoindenting
+set shiftwidth=4  " number of spaces to use for autoindenting
+set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
+let g:indent_guides_guide_size =1 
+
 set ruler
 
 
-set autoindent
+autocmd BufNewFile,BufRead *.json set ft=javascript
+
+map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
 
 "status bar
 " Some information is always good...
@@ -83,20 +116,39 @@ set noshowmode
 "
 
 " for MiniBuffExplorer
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
+"let g:miniBufExplMapWindowNavVim = 1
+"let g:miniBufExplMapWindowNavArrows = 1
+"let g:miniBufExplMapCTabSwitchBufs = 1
+"let g:miniBufExplModSelTarget = 1
+"let g:miniBufExplorerAutoUpdate= 1
+"
+set hidden
+set nu
+set backspace=indent,eol,start
+
+
 
 " Things having to do with my r-vim-plugin.
 let vimrplugin_underscore=0
+"let vimrplugin_r_path =/usr/local/bin/R
+
+
+" Powerline:
+let g:Powerline_symbols = 'compatible'
+
 
 "font and linespace
-set guifont=Ubuntu\ Mono:h14
+set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
 set linespace=2
 
-set t_Co=256 
 
-colorscheme molokai
 
-let g:molokai_original=1
+
+
+let molokai_original=0
+"hide the toolbar in the gui
+if has("gui_running")
+    let g:molokai_original=0
+    set guioptions=egmrt
+    colorscheme molokai
+endif
