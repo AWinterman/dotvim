@@ -134,7 +134,7 @@ let vimrplugin_underscore=0
 
 
 " Powerline:
-let g:Powerline_symbols = 'compatible'
+let g:Powerline_symbols = 'fancy'
 
 
 "font and linespace
