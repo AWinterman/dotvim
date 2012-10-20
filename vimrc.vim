@@ -106,7 +106,7 @@ set showfulltag
 set showcmd
 set wildmenu
 set laststatus=2
-set statusline=%f%=\ %Y\ %c%V,%l/%L\ %P\ [%M%n%W]:%{tabpagenr()}/%{tabpagenr('$')}
+"set statusline=%f%=\ %Y\ %c%V,%l/%L\ %P\ [%M%n%W]:%{tabpagenr()}/%{tabpagenr('$')}
 
 " ...but not too much
 set report=0
@@ -145,10 +145,13 @@ set linespace=2
 
 
 
-let molokai_original=0
-"hide the toolbar in the gui
+"let molokai_original=0
 if has("gui_running")
-    let g:molokai_original=0
+    "let g:molokai_original=0
     set guioptions=egmrt
-    colorscheme molokai
+    set background=light
+    "colorscheme molokai
+else
+    let &t_Co=256
 endif
+colorscheme solarized
