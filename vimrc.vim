@@ -1,6 +1,7 @@
 " This is standard pathogen and vim setup
 set nocompatible
 "pathogen
+call pathogen#helptags()
 call pathogen#infect() 
 call pathogen#runtime_append_all_bundles()
 
@@ -10,15 +11,15 @@ set foldmethod=indent
 set foldlevel=99
 
 "control + direction instead of c+w + direction
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-l> <c-w>l
+noremap <c-h> <c-w>h
 
 
 "Easy access to Gundo. I'll have to explore this at some point soon, it looks
 "really cool.
-map <leader>g :GundoToggle<CR>
+noremap <leader>g :GundoToggle<CR>
 
 
 "Mak sure code is pep8:
@@ -32,9 +33,14 @@ filetype on
 filetype on
 set completeopt=menuone,longest,preview
 
+"python settings
 au FileType py setlocal comments-=:# comments+=:#
 
-
+vnoremap <leader>s :ScreenSend<CR> <CR>k
+"<esc> O<esc>V :ScreenSend<CR> u
+nnoremap <leader>s V :ScreenSend<CR> j
+inoremap <leader>s <esc>V :ScreenSend<CR> i
+"
 "general
 syntax on
 filetype on
@@ -76,6 +82,7 @@ set pastetoggle=<F2>
 
 "" set number:
 "highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+let g:solarized_termcolors=255
 
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
@@ -98,7 +105,7 @@ set ruler
 
 autocmd BufNewFile,BufRead *.json set ft=javascript
 
-map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
+noremap <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
 
 "status bar
 " Some information is always good...
@@ -134,7 +141,7 @@ let vimrplugin_underscore=0
 
 
 " Powerline:
-let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols = 'compatible'
 
 
 "font and linespace
@@ -155,3 +162,13 @@ else
     let &t_Co=256
 endif
 colorscheme solarized
+
+
+
+"using vim as mah pager
+let $PAGER=''
+
+
+"Nerdtree
+let g:NERDTreeWinPos = "right"
+
