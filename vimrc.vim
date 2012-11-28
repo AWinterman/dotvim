@@ -1,6 +1,12 @@
 " This is standard pathogen and vim setup
 set nocompatible
 "pathogen
+"
+filetype on
+filetype off
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+filetype plugin indent on
 call pathogen#helptags()
 call pathogen#infect() 
 call pathogen#runtime_append_all_bundles()
@@ -16,6 +22,7 @@ noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
 noremap <c-h> <c-w>h
 
+"noremap Y "+y
 
 "Easy access to Gundo. I'll have to explore this at some point soon, it looks
 "really cool.
@@ -29,17 +36,13 @@ noremap <leader>g :GundoToggle<CR>
 "let g:SuperTabDefaultCompletionType = "context"
 
 "Enable menu and pydoc preview
-filetype on
-filetype on
+"filetype on
 set completeopt=menuone,longest,preview
 
 "python settings
 au FileType py setlocal comments-=:# comments+=:#
+let g:slime_target = "tmux"
 
-vnoremap <leader>s :ScreenSend<CR> <CR>k
-"<esc> O<esc>V :ScreenSend<CR> u
-nnoremap <leader>s V :ScreenSend<CR> j
-inoremap <leader>s <esc>V :ScreenSend<CR> i
 "
 "general
 syntax on
@@ -78,11 +81,11 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.
 autocmd filetype html,xml set listchars-=tab:>.
 set pastetoggle=<F2>
 
-
-
+set guioptions-=r
 "" set number:
 "highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 let g:solarized_termcolors=255
+set fillchars+=vert:\ 
 
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
@@ -145,7 +148,7 @@ let g:Powerline_symbols = 'compatible'
 
 
 "font and linespace
-set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
+set guifont=Ubuntu\ Mono\ for\ Powerline\ 14
 set linespace=2
 
 
@@ -160,6 +163,7 @@ if has("gui_running")
     "colorscheme molokai
 else
     let &t_Co=256
+    set mouse=a
 endif
 colorscheme solarized
 
@@ -171,4 +175,5 @@ let $PAGER=''
 
 "Nerdtree
 let g:NERDTreeWinPos = "right"
+
 
