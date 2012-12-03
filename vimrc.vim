@@ -28,17 +28,6 @@ noremap <c-h> <c-w>h
 "really cool.
 noremap <leader>g :GundoToggle<CR>
 
-
-"Mak sure code is pep8:
-
-"autocompletion settings:
-"au FileType python set omnifunc=pythoncomplete#Complete
-"let g:SuperTabDefaultCompletionType = "context"
-
-"Enable menu and pydoc preview
-"filetype on
-set completeopt=menuone,longest,preview
-
 "python settings
 au FileType py setlocal comments-=:# comments+=:#
 let g:slime_target = "tmux"
@@ -75,15 +64,12 @@ set title                " change the terminal's title
 set visualbell           " don't beep
 set noerrorbells         " don't beep
 
-
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 autocmd filetype html,xml set listchars-=tab:>.
-set pastetoggle=<F2>
 
 set guioptions-=r
 "" set number:
-"highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 let g:solarized_termcolors=255
 set fillchars+=vert:\ 
 
@@ -97,10 +83,14 @@ set expandtab
 
 "line limits:
 set tw=79
+
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match Error /\%80v.\+/ "tells me when I'm over.
+
 set autoindent
 set copyindent    " copy the previous indentation on autoindenting
 set shiftwidth=4  " number of spaces to use for autoindenting
-set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
+"set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 let g:indent_guides_guide_size =1 
 
 set ruler
@@ -110,28 +100,6 @@ autocmd BufNewFile,BufRead *.json set ft=javascript
 
 noremap <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
 
-"status bar
-" Some information is always good...
-set showfulltag
-set showcmd
-set wildmenu
-set laststatus=2
-"set statusline=%f%=\ %Y\ %c%V,%l/%L\ %P\ [%M%n%W]:%{tabpagenr()}/%{tabpagenr('$')}
-
-" ...but not too much
-set report=0
-set shortmess+=asWAI
-set showtabline=0
-set noshowmode
-"
-
-" for MiniBuffExplorer
-"let g:miniBufExplMapWindowNavVim = 1
-"let g:miniBufExplMapWindowNavArrows = 1
-"let g:miniBufExplMapCTabSwitchBufs = 1
-"let g:miniBufExplModSelTarget = 1
-"let g:miniBufExplorerAutoUpdate= 1
-"
 set hidden
 set nu
 set backspace=indent,eol,start
@@ -152,13 +120,10 @@ set guifont=Ubuntu\ Mono\ for\ Powerline\ 14
 set linespace=2
 
 
-
-
-
 "let molokai_original=0
 if has("gui_running")
     "let g:molokai_original=0
-    set guioptions=egmrt
+    set guioptions=egmt
     set background=light
     "colorscheme molokai
 else
@@ -168,10 +133,8 @@ endif
 colorscheme solarized
 
 
-
 "using vim as mah pager
 let $PAGER=''
-
 
 "Nerdtree
 let g:NERDTreeWinPos = "right"
