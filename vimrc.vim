@@ -56,6 +56,9 @@ let vimclojure#UseErrorBuffer = 0
 set hlsearch
 set incsearch
 set smartcase
+noremap <leader>h :nohl<return>
+vnoremap <leader>h :nohl<return>
+inoremap <leader>h :nohl<return>
 
 set history=1000         " remember more commands and search history
 set undolevels=1000      " use many muchos levels of undo
@@ -116,7 +119,7 @@ let g:Powerline_symbols = 'compatible'
 
 
 "font and linespace
-set guifont=Ubuntu\ Mono\ for\ Powerline\ 14
+"set guifont=Ubuntu\ Mono\ for\ Powerline\ 14
 set linespace=2
 
 
@@ -124,13 +127,13 @@ set linespace=2
 if has("gui_running")
     "let g:molokai_original=0
     set guioptions=egmt
-    set background=light
+    set background=dark
     "colorscheme molokai
 else
     let &t_Co=256
     set mouse=a
 endif
-colorscheme solarized
+colorscheme lucius 
 
 
 "using vim as mah pager
@@ -139,4 +142,18 @@ let $PAGER=''
 "Nerdtree
 let g:NERDTreeWinPos = "right"
 
+"Snippets settings:
+let g:snips_author = "Andrew Winterman"
+
+
+"keeping closetags from being overzealous:
+autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
+autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source~/.vim/bundle/closetag/plugin/closetag.vim
+
+
+"paste:
+nmap <leader>p :setlocal paste! paste?<cr>
+nmap gv `[v`]
+
+"
 
