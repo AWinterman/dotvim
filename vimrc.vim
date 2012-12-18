@@ -11,6 +11,11 @@ call pathogen#helptags()
 call pathogen#infect() 
 call pathogen#runtime_append_all_bundles()
 
+let Tlist_Ctags_Cmd="/usr/local/bin/ctags"
+nnoremap <leader>t :TlistToggle<CR>
+inoremap <leader>t :TlistToggle<CR>
+vnoremap <leader>t :TlistToggle<CR>
+
 
 "Lots of folding
 set foldmethod=indent
@@ -22,15 +27,15 @@ noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
 noremap <c-h> <c-w>h
 
-"noremap Y "+y
-
-"Easy access to Gundo. I'll have to explore this at some point soon, it looks
-"really cool.
+"Easy access to Gundo.
 noremap <leader>g :GundoToggle<CR>
 
 "python settings
 au FileType py setlocal comments-=:# comments+=:#
-let g:slime_target = "tmux"
+
+map <Leader>s :SlimuxREPLSendLine<CR>
+vmap <Leader>s :SlimuxREPLSendSelection<CR>
+map <Leader>a :SlimuxShellLast<CR>
 
 "
 "general
@@ -119,7 +124,6 @@ let g:Powerline_symbols = 'compatible'
 
 
 "font and linespace
-"set guifont=Ubuntu\ Mono\ for\ Powerline\ 14
 set linespace=2
 
 
@@ -128,12 +132,17 @@ if has("gui_running")
     "let g:molokai_original=0
     set guioptions=egmt
     set background=dark
+    set guifont="Inconsolata-dz for\ Powerline\ 14"
+    colorscheme lucius 
     "colorscheme molokai
 else
     let &t_Co=256
     set mouse=a
+    set background=dark
+    colorscheme solarized
 endif
-colorscheme lucius 
+let g:Powerline_symbols = "fancy"
+
 
 
 "using vim as mah pager
@@ -141,6 +150,7 @@ let $PAGER=''
 
 "Nerdtree
 let g:NERDTreeWinPos = "right"
+noremap <leader>n :NERDTreeToggle<CR>
 
 "Snippets settings:
 let g:snips_author = "Andrew Winterman"

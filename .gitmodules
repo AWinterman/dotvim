@@ -70,3 +70,12 @@
 [submodule "bundle/better-css-hl"]
 	path = bundle/better-css-hl
 	url = https://github.com/vim-scripts/Better-CSS-Syntax-for-Vim.git
+[submodule "bundle/slimux"]
+	path = bundle/slimux
+	url = https://github.com/epeli/slimux.git
+[submodule "bundle/easymotion"]
+	path = bundle/easymotion
+	url = https://github.com/Lokaltog/vim-easymotion.git
+[submodule "bundle/taglist"]
+	path = bundle/taglist
+	url = https://github.com/vim-scripts/taglist.vim.git
