@@ -12,9 +12,18 @@ call pathogen#infect()
 call pathogen#runtime_append_all_bundles()
 
 let Tlist_Ctags_Cmd="/usr/local/bin/ctags"
-nnoremap <leader>t :TlistToggle<CR>
-inoremap <leader>t :TlistToggle<CR>
-vnoremap <leader>t :TlistToggle<CR>
+nnoremap <leader>tl :TlistToggle<CR>
+inoremap <leader>tl :TlistToggle<CR>
+vnoremap <leader>tl :TlistToggle<CR>
+
+nnoremap <leader>t :CommandT<CR>
+inoremap <leader>t :CommandT<CR>
+vnoremap <leader>t :CommandT<CR>
+
+
+
+
+
 
 
 "Lots of folding

@@ -79,3 +79,12 @@
 [submodule "bundle/taglist"]
 	path = bundle/taglist
 	url = https://github.com/vim-scripts/taglist.vim.git
+[submodule "bundle/tabular"]
+	path = bundle/tabular
+	url = https://github.com/hallettj/jslint.vim.gi://github.com/godlygeek/tabular.git
+[submodule "bundle/jslint"]
+	path = bundle/jslint
+	url = https://github.com/hallettj/jslint.vim.git
+[submodule "bundle/mango"]
+	path = bundle/mango
+	url = https://github.com/goatslacker/mango.vim.git
