@@ -46,6 +46,8 @@ map <Leader>s :SlimuxREPLSendLine<CR>
 vmap <Leader>s :SlimuxREPLSendSelection<CR>
 map <Leader>a :SlimuxShellLast<CR>
 
+let slimux_python_allowed_indent0=1
+
 "
 "general
 syntax on
