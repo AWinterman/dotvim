@@ -46,6 +46,12 @@ map <Leader>s :SlimuxREPLSendLine<CR>
 vmap <Leader>s :SlimuxREPLSendSelection<CR>
 map <Leader>a :SlimuxShellLast<CR>
 
+noremap <c-G> :Gcommit<CR>
+vnoremap <c-G> :Gcommit<CR>
+inoremap <c-g> :Gcommit<CR>
+
+
+
 let slimux_python_allowed_indent0=1
 
 "
