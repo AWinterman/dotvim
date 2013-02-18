@@ -21,6 +21,12 @@ inoremap <leader>t :CommandT<CR>
 vnoremap <leader>t :CommandT<CR>
 
 
+"use ack instead of grep
+set grepprg=ack
+
+set ruler                      " show the ruler
+set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
+set showcmd                    " show partial commands in status line and
 
 
 
