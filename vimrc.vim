@@ -21,6 +21,8 @@ inoremap <leader>t :CommandT<CR>
 vnoremap <leader>t :CommandT<CR>
 
 
+"python mode options:
+let g:pymode_lint = 0
 
 
 
