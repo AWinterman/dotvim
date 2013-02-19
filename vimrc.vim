@@ -23,6 +23,12 @@ vnoremap <leader>t :CommandT<CR>
 
 "python mode options:
 let g:pymode_lint = 0
+"use ack instead of grep
+set grepprg=ack
+
+set ruler                      " show the ruler
+set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
+set showcmd                    " show partial commands in status line and
 
 
 
