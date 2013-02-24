@@ -115,8 +115,8 @@ set expandtab
 "line limits:
 set tw=79
 
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match Error /\%80v.\+/ "tells me when I'm over.
+"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+"match Error /\%80v.\+/ "tells me when I'm over.
 
 set autoindent
 set copyindent    " copy the previous indentation on autoindenting
@@ -156,7 +156,7 @@ if has("gui_running")
     set guioptions=egmt
     set background=dark
     set guifont="Inconsolata-dz for\ Powerline\ 14"
-    colorscheme lucius 
+    colorscheme solarized
     "colorscheme molokai
 else
     let &t_Co=256
