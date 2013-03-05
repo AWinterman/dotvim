@@ -42,6 +42,11 @@ noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
 noremap <c-h> <c-w>h
 
+noremap j gj
+noremap k gk
+
+
+
 "Easy access to Gundo.
 noremap <leader>g :GundoToggle<CR>
 
