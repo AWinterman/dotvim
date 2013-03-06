@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Applications/MAMP/conf/apache'
+let g:netrw_dirhist_2='/Users/andrewwinterman/Work/sparks-honey/classifier/src/classify'
+let g:netrw_dirhist_3='/Users/andrewwinterman/.vim'
+let g:netrw_dirhist_4='/Users/andrewwinterman/Work/strata-sensors/scripts'
+let g:netrw_dirhist_5='/Users/andrewwinterman/.vmail/default'
+let g:netrw_dirhist_6='/Users/andrewwinterman/.vmail'
+let g:netrw_dirhist_7='/Users/andrewwinterman/dot'
