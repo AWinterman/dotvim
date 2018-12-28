@@ -1,37 +1,70 @@
-" This is standard pathogen and vim setup
+set rtp+=~/.vim/bundle/vundle/
+
+call vundle#rc()
+
+" Required
+Bundle 'gmarik/vundle'
+
+" Vundle bundles
+Bundle 'bracki/vim-prometheus'
+Bundle 'tpope/vim-fugitive'
+Bundle 'hail2u/vim-css3-syntax'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'nvie/vim-flake8'
+Bundle 'sjl/gundo.vim'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'jtratner/vim-flavored-markdown'
+Bundle 'rhysd/vim-gfm-syntax'
+Bundle 'scrooloose/syntastic'
+Bundle 'kien/ctrlp.vim'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'nathanielc/vim-tickscript'
+Plugin 'fatih/vim-go'
+Bundle 'uarun/vim-protobuf'
+Bundle 'vim-scripts/vim-auto-save'
+Plugin 'vim-airline/vim-airline' 
+Plugin 'vim-airline/vim-airline-themes' 
+Plugin 'tpope/vim-unimpaired'
+Plugin 'maralla/completor.vim'
+Plugin 'Yggdroot/indentLine'
+
 set nocompatible
-"pathogen
-"
-filetype on
-filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-filetype plugin indent on
-call pathogen#helptags()
-call pathogen#infect() 
-call pathogen#runtime_append_all_bundles()
 
-let Tlist_Ctags_Cmd="/usr/local/bin/ctags"
-nnoremap <leader>tl :TlistToggle<CR>
-inoremap <leader>tl :TlistToggle<CR>
-vnoremap <leader>tl :TlistToggle<CR>
+let g:indentLine_setConceal = 0
 
-nnoremap <leader>t :CommandT<CR>
-inoremap <leader>t :CommandT<CR>
-vnoremap <leader>t :CommandT<CR>
+let g:auto_save = 1
+set autowrite
+let g:go_fmt_autosave = 0
 
 
-"python mode options:
-let g:pymode_lint = 0
-"use ack instead of grep
-set grepprg=ack
+let g:ctrlp_map = '<c-t>'
+
+let g:gundo_prefer_python3 = 1
+
+
+let g:syntastic_javascript_checkers = ['standard']
+let g:syntastic_javascript_standard_exec = 'standard'
+let g:syntastic_javascript_standard_generic = 1
+set statusline+=%#warningmsg#
+set statusline+=%*
+
+set clipboard^=unnamed
+
 
 set ruler                      " show the ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
-set showcmd                    " show partial commands in status line and
+set breakindent
+set smartindent
+set autoindent
 
+" autocmd bufwritepost *.js silent !standard % --format > /dev/null 2> /dev/null
+set autoread
 
-
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 25
+autocmd FileType netrw setl bufhidden=delete
 
 
 "Lots of folding
@@ -43,52 +76,32 @@ noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
 noremap <c-h> <c-w>h
+noremap <leader>e :Explore<CR>
+
+noremap <D-}> gt
+noremap <D-{> gT
+
+" for when there's no wordwrap.
+noremap j gj
+noremap k gk
 
 "Easy access to Gundo.
 noremap <leader>g :GundoToggle<CR>
 
-"python settings
-au FileType py setlocal comments-=:# comments+=:#
+noremap <leader>mp :!markdown-preview %&<CR>
 
-map <Leader>s :SlimuxREPLSendLine<CR>
-vmap <Leader>s :SlimuxREPLSendSelection<CR>
-map <Leader>a :SlimuxShellLast<CR>
-
-noremap <c-G> :Gcommit<CR>
-vnoremap <c-G> :Gcommit<CR>
-inoremap <c-g> :Gcommit<CR>
-
-
-
-let slimux_python_allowed_indent0=1
-
-"
 "general
-syntax on
+syntax enable
 filetype on
 filetype plugin indent on
-
-" Here's the vimclojure stuff. You'll need to adjust the NailgunClient
-" setting if you're on windows or have other problems.
-let vimclojure#FuzzyIndent=1
-let vimclojure#HighlightBuiltins=1
-let vimclojure#HighlightContrib=1
-let vimclojure#DynamicHighlighting=1
-let vimclojure#ParenRainbow=1
-let vimclojure#WantNailgun = 1
-let vimclojure#NailgunClient = $HOME . "/.vim/lib/vimclojure-nailgun-client/ng"
-let vimclojure#SplitPos = "right"
-let vimclojure#SplitSize = 80
-let vimclojure#UseErrorBuffer = 0
-
 
 "Search highlighting and autocomplete
 set hlsearch
 set incsearch
-set smartcase
+" set ignorecase
+
 noremap <leader>h :nohl<return>
 vnoremap <leader>h :nohl<return>
-inoremap <leader>h :nohl<return>
 
 set history=1000         " remember more commands and search history
 set undolevels=1000      " use many muchos levels of undo
@@ -97,98 +110,73 @@ set title                " change the terminal's title
 set visualbell           " don't beep
 set noerrorbells         " don't beep
 
-set list
-set listchars=tab:>.,trail:.,extends:#,nbsp:.
-autocmd filetype html,xml set listchars-=tab:>.
-
-set guioptions-=r
-"" set number:
-let g:solarized_termcolors=255
-set fillchars+=vert:\ 
-
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
 
-set tabstop=4 
-set shiftwidth=4 
-set shiftwidth=4
-set expandtab
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
 
 "line limits:
-set tw=79
+set tw=80
+set colorcolumn=81
 
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match Error /\%80v.\+/ "tells me when I'm over.
+set background=dark
+colorscheme solarized
 
-set autoindent
-set copyindent    " copy the previous indentation on autoindenting
-set shiftwidth=4  " number of spaces to use for autoindenting
-"set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
-let g:indent_guides_guide_size =1 
-
-set ruler
-
-
-autocmd BufNewFile,BufRead *.json set ft=javascript
-
-noremap <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
+let g:indent_guides_guide_size = 1
 
 set hidden
-set nu
+set rnu
 set backspace=indent,eol,start
 
+set whichwrap+=<,>,h,l,[,]
 
 
-" Things having to do with my r-vim-plugin.
-let vimrplugin_underscore=0
-"let vimrplugin_r_path =/usr/local/bin/R
+" For regular expressions turn magic on
+set magic
 
-
-" Powerline:
-let g:Powerline_symbols = 'compatible'
-
+" Show matching brackets when text indicator is over them
+set showmatch
 
 "font and linespace
 set linespace=2
 
-
-"let molokai_original=0
-if has("gui_running")
-    "let g:molokai_original=0
-    set guioptions=egmt
-    set background=dark
-    set guifont="Inconsolata-dz for\ Powerline\ 14"
-    colorscheme lucius 
-    "colorscheme molokai
-else
-    let &t_Co=256
-    set mouse=a
-    set background=dark
-    colorscheme solarized
-endif
-let g:Powerline_symbols = "fancy"
-
-
+set mouse=a
 
 "using vim as mah pager
 let $PAGER=''
 
-"Nerdtree
-let g:NERDTreeWinPos = "right"
-noremap <leader>n :NERDTreeToggle<CR>
-
-"Snippets settings:
-let g:snips_author = "Andrew Winterman"
-
-
-"keeping closetags from being overzealous:
-autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
-autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source~/.vim/bundle/closetag/plugin/closetag.vim
-
-
 "paste:
 nmap <leader>p :setlocal paste! paste?<cr>
-nmap gv `[v`]
 
-"
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
 
+
+set nobackup
+set nowritebackup
+set backupdir=~/tmp
+set noswapfile
+
+set expandtab
+
+set wildmenu
+
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
+:set tabstop=4
+:set shiftwidth=4
+:set expandtab
+
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2
